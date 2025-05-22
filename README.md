@@ -1,5 +1,5 @@
 TP 4 : Déploiement d'Odoo avec Docker Compose
-Ce projet déploie une instance d'Odoo (un ERP open-source) avec une base de données PostgreSQL et pgAdmin pour la gestion, en utilisant Docker Compose. Il a été réalisé dans le cadre du TP 4, en couvrant les points 1 à 4 des exigences. La persistance des données (point 5) et le déploiement en cluster Docker Swarm (point 6) ne sont pas encore fonctionnels.
+Ce projet déploie une instance d'Odoo 18avec une base de données PostgreSQL et pgAdmin pour la gestion, en utilisant Docker Compose dans le cadre d'un TP pour le controle COntinu du cours de Conteneursttion avc DOcker. Il a été réalisé dans le cadre du TP 4, en couvrant les points 1 à 4 des exigences. La persistance des données (point 5) et le déploiement en cluster Docker Swarm (point 6) ne sont pas encore fonctionnels.
 Fonctionnalités
 
 1)Services déployés : Odoo, PostgreSQL, et pgAdmin.
@@ -37,7 +37,7 @@ PGADMIN_EMAIL=votre-email@example.com
 PGADMIN_PASSWORD=admin123
 
 
-Vérifier le fichier docker-compose.yml (fourni dans le dépôt) qui contient :
+Le fichier docker-compose.yml (fourni dans le dépôt) qui contient :
 
 Service odoo : utilise l’image odoo:18, exposé sur le port 8069.
 Service postgresql : utilise l’image postgres:13, exposé sur le port 5432.
@@ -45,6 +45,7 @@ Service pgadmin : utilise l’image dpage/pgadmin4, exposé sur le port 5050.
 Un réseau commun odoo_network et des volumes pour chaque service.
 
 
+![image](https://github.com/user-attachments/assets/89a442ea-8682-4aac-9d12-c230294abc1f)
 
 Lancement des Services
 
@@ -60,8 +61,13 @@ Vous devriez voir trois conteneurs : odoo, postgresql, et pgadmin.
 Accéder aux services :
 
 Odoo : Ouvrez http://localhost:8069 dans votre navigateur.
+![image](https://github.com/user-attachments/assets/9d1538f4-8355-4f67-a69d-506fd92f0537)
+Les identifiants de la premiere connexion sont admin admin
+
 pgAdmin : Ouvrez http://localhost:5050, connectez-vous avec PGADMIN_EMAIL et PGADMIN_PASSWORD.
 PostgreSQL : Connectez-vous via :docker exec -it postgresql psql -U odoo -d odoo
+![image](https://github.com/user-attachments/assets/943c5cef-6cc8-459c-ac1a-8c17f1325ee2)
+
 
 
 
@@ -101,6 +107,7 @@ Dépannage
 
 Si Odoo ne charge pas : Vérifiez que PostgreSQL est démarré (docker ps) et consultez les logs (docker-compose logs odoo).
 Si pgAdmin ne répond pas : Assurez-vous que le port 5050 n’est pas utilisé par une autre application.
+Les identifiants de connexion snt ceux de votre .env file
 
 Contribution
 Pour suggérer des améliorations, ouvrez une issue ou une pull request sur le dépôt GitHub.Licence
